@@ -49,6 +49,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	}
 
 	@Override
+
 	public MerchantStore getByCode(String code) throws ServiceException {
 		return merchantRepository.findByCode(code);
 	}
@@ -70,6 +71,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	}
 
 	@Override
+
 	public Page<MerchantStore> listAll(Optional<String> storeName, int page, int count) throws ServiceException {
 		String store = null;
 		if (storeName != null && storeName.isPresent()) {
@@ -81,11 +83,13 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	}
 
 	@Override
+
 	public List<MerchantStore> findAllStoreCodeNameEmail() throws ServiceException {
 		return merchantRepository.findAllStoreCodeNameEmail();
 	}
 
 	@Override
+
 	public Page<MerchantStore> listAllRetailers(Optional<String> storeName, int page, int count)
 			throws ServiceException {
 		String store = null;
@@ -98,11 +102,13 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	}
 
 	@Override
+
 	public List<MerchantStore> findAllStoreNames() throws ServiceException {
 		return merchantRepository.findAllStoreNames();
 	}
 
 	@Override
+
 	public MerchantStore getParent(String code) throws ServiceException {
 		Validate.notNull(code, "MerchantStore code cannot be null");
 

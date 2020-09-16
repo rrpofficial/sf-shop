@@ -2,6 +2,7 @@ package com.salesmanager.core.business.services.shipping;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class ShippingOriginServiceImpl extends SalesManagerEntityServiceImpl<Lon
 
 
 	@Override
+
 	public ShippingOrigin getByStore(MerchantStore store) {
 		// TODO Auto-generated method stub
 		ShippingOrigin origin = shippingOriginRepository.findByStore(store.getId());

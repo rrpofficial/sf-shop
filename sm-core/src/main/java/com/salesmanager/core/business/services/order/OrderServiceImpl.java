@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
@@ -114,12 +115,14 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     }
     
     @Override
+
     public Order processOrder(Order order, Customer customer, List<ShoppingCartItem> items, OrderTotalSummary summary, Payment payment, MerchantStore store) throws ServiceException {
     	
     	return process(order, customer, items, summary, payment, null, store);
     }
     
     @Override
+
     public Order processOrder(Order order, Customer customer, List<ShoppingCartItem> items, OrderTotalSummary summary, Payment payment, Transaction transaction, MerchantStore store) throws ServiceException {
     	
     	return process(order, customer, items, summary, payment, transaction, store);
@@ -399,6 +402,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
 
     @Override
+
     public OrderTotalSummary caculateOrderTotal(final OrderSummary orderSummary, final Customer customer, final MerchantStore store, final Language language) throws ServiceException {
         Validate.notNull(orderSummary,"Order summary cannot be null");
         Validate.notNull(orderSummary.getProducts(),"Order summary.products cannot be null");
@@ -416,6 +420,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
 
     @Override
+
     public OrderTotalSummary caculateOrderTotal(final OrderSummary orderSummary, final MerchantStore store, final Language language) throws ServiceException {
         Validate.notNull(orderSummary,"Order summary cannot be null");
         Validate.notNull(orderSummary.getProducts(),"Order summary.products cannot be null");
@@ -475,6 +480,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
      * 
      */
     @Override
+
     public OrderTotalSummary calculateShoppingCartTotal(
                                                         final ShoppingCart shoppingCart, final Customer customer, final MerchantStore store,
                                                         final Language language) throws ServiceException {
@@ -505,6 +511,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
      * 
      */
     @Override
+
     public OrderTotalSummary calculateShoppingCartTotal(
                                                         final ShoppingCart shoppingCart, final MerchantStore store, final Language language)
                                                                         throws ServiceException {
@@ -545,6 +552,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     }
 
     @Override
+
     public Order getOrder(final Long orderId, MerchantStore store ) {
     	Validate.notNull(orderId, "Order id cannot be null");
     	Validate.notNull(store, "Store cannot be null");
@@ -554,17 +562,20 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
     /** legacy **/
     @Override
+
     public OrderList listByStore(final MerchantStore store, final OrderCriteria criteria) {
         return orderRepository.listByStore(store, criteria);
     }
 
     @Override
+
     public OrderList getOrders(final OrderCriteria criteria, MerchantStore store) {
         return orderRepository.listOrders(store, criteria);
     }
 
 
     @Override
+
     public void saveOrUpdate(final Order order) throws ServiceException {
 
         if(order.getId()!=null && order.getId()>0) {

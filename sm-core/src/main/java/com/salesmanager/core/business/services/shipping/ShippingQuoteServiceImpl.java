@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,12 +37,14 @@ public class ShippingQuoteServiceImpl extends SalesManagerEntityServiceImpl<Long
 	}
 
 	@Override
+
 	public List<Quote> findByOrder(Order order) throws ServiceException {
 		Validate.notNull(order,"Order cannot be null");
 		return this.shippingQuoteRepository.findByOrder(order.getId());
 	}
 
 	@Override
+
 	public ShippingSummary getShippingSummary(Long quoteId, MerchantStore store) throws ServiceException {
 		
 		Validate.notNull(quoteId,"quoteId must not be null");

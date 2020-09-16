@@ -39,7 +39,7 @@ import java.util.*;
  *
  */
 @Controller
-public class ReferenceController {
+public class 	ReferenceController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReferenceController.class);
 	

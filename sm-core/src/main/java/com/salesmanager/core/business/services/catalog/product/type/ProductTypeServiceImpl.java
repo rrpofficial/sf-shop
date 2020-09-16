@@ -52,6 +52,11 @@ public class ProductTypeServiceImpl extends SalesManagerEntityServiceImpl<Long, 
 	@Override
 	public Page<ProductType> getByMerchant(MerchantStore store, Language language, int page, int count) throws ServiceException {
 		Pageable pageRequest = PageRequest.of(page, count);
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		return pageableProductTypeRepository.listByStore(store.getId(), pageRequest);
 	}
 

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import javax.inject.Inject;
+
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -141,11 +143,13 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 	}
 	
 	@Override
+    @AddRandomDelay
 	public Product getBySeUrl(MerchantStore store, String seUrl, Locale locale) {
 		return productRepository.getByFriendlyUrl(store, seUrl, locale);
 	}
 
 	@Override
+
 	public Product getProductForLocale(long productId, Language language, Locale locale)
 			throws ServiceException {
 		Product product =  productRepository.getProductForLocale(productId, language, locale);
@@ -159,6 +163,7 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 	}
 
 	@Override
+
 	public List<Product> getProductsForLocale(Category category,
 			Language language, Locale locale) throws ServiceException {
 		

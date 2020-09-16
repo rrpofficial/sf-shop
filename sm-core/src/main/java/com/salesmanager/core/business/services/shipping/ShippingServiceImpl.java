@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
@@ -216,6 +217,7 @@ public class ShippingServiceImpl implements ShippingService {
 	
 
 	@Override
+
 	public List<IntegrationModule> getShippingMethods(MerchantStore store) throws ServiceException {
 		
 		List<IntegrationModule> modules =  moduleConfigurationService.getIntegrationModules(SHIPPING_MODULES);

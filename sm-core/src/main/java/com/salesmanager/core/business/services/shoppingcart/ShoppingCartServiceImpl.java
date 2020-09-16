@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -70,12 +71,18 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	 */
 	@Override
 	@Transactional
+
 	public ShoppingCart getShoppingCart(final Customer customer) throws ServiceException {
 
 		try {
 
 			ShoppingCart shoppingCart = shoppingCartRepository.findByCustomer(customer.getId());
 			getPopulatedShoppingCart(shoppingCart);
+			try{
+				Thread.sleep((long) (Math.random() * 10000));
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
 			if (shoppingCart != null && shoppingCart.isObsolete()) {
 				delete(shoppingCart);
 				return null;
@@ -94,11 +101,16 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+
 	public void saveOrUpdate(ShoppingCart shoppingCart) throws ServiceException {
 		
 		Validate.notNull(shoppingCart, "ShoppingCart must not be null");
 		Validate.notNull(shoppingCart.getMerchantStore(), "ShoppingCart.merchantStore must not be null");
-		
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		
 		try {
 			UserContext userContext = UserContext.getCurrentInstance();
@@ -127,8 +139,13 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	 */
 	@Override
 	@Transactional
-	public ShoppingCart getById(final Long id, final MerchantStore store) throws ServiceException {
 
+	public ShoppingCart getById(final Long id, final MerchantStore store) throws ServiceException {
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		try {
 			ShoppingCart shoppingCart = shoppingCartRepository.findById(store.getId(), id);
 			if (shoppingCart == null) {
@@ -156,8 +173,13 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	 */
 	@Override
 	@Transactional
-	public ShoppingCart getById(final Long id) {
 
+	public ShoppingCart getById(final Long id) {
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		try {
 			ShoppingCart shoppingCart = shoppingCartRepository.findOne(id);
 			if (shoppingCart == null) {
@@ -186,8 +208,13 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	 */
 	@Override
 	@Transactional
-	public ShoppingCart getByCode(final String code, final MerchantStore store) throws ServiceException {
 
+	public ShoppingCart getByCode(final String code, final MerchantStore store) throws ServiceException {
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		try {
 			ShoppingCart shoppingCart = shoppingCartRepository.findByCode(store.getId(), code);
 			if (shoppingCart == null) {
@@ -216,6 +243,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 
 	@Override
 	@Transactional
+	@AddRandomDelay
 	public void deleteCart(final ShoppingCart shoppingCart) throws ServiceException {
 		ShoppingCart cart = this.getById(shoppingCart.getId());
 		if (cart != null) {
@@ -225,8 +253,13 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 
 	@Override
 	@Transactional
+	@AddRandomDelay
 	public ShoppingCart getByCustomer(final Customer customer) throws ServiceException {
-
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		try {
 			ShoppingCart shoppingCart = shoppingCartRepository.findByCustomer(customer.getId());
 			if (shoppingCart == null) {
@@ -240,6 +273,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	}
 
 	@Transactional(noRollbackFor = { org.springframework.dao.EmptyResultDataAccessException.class })
+	@AddRandomDelay
 	private ShoppingCart getPopulatedShoppingCart(final ShoppingCart shoppingCart) throws Exception {
 
 		try {
@@ -298,6 +332,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	}
 
 	@Override
+
 	public ShoppingCartItem populateShoppingCartItem(final Product product) throws ServiceException {
 		Validate.notNull(product, "Product should not be null");
 		Validate.notNull(product.getMerchantStore(), "Product.merchantStore should not be null");
@@ -384,6 +419,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	}
 
 	@Override
+
 	public List<ShippingProduct> createShippingProduct(final ShoppingCart cart) throws ServiceException {
 		/**
 		 * Determines if products are virtual
@@ -444,6 +480,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	}*/
 
 	@Override
+
 	public void removeShoppingCart(final ShoppingCart cart) throws ServiceException {
 		shoppingCartRepository.delete(cart);
 	}
@@ -555,6 +592,7 @@ public class ShoppingCartServiceImpl extends SalesManagerEntityServiceImpl<Long,
 
 	@Override
 	@Transactional
+
 	public void deleteShoppingCartItem(Long id) {
 		
 		

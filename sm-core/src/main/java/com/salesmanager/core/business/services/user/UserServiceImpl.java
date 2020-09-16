@@ -94,6 +94,7 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 	}
 
 	@Override
+
 	public User getByUserName(String userName, String storeCode) throws ServiceException {
 		return userRepository.findByUserName(userName, storeCode);
 	}
@@ -120,6 +121,7 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 	}
 
 	@Override
+
 	public User getById(Long id, MerchantStore store) {
 		Validate.notNull(store, "MerchantStore cannot be null");
 		return userRepository.findByUserId(id, store.getCode());

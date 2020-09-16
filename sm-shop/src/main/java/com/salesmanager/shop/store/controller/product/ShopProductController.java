@@ -129,15 +129,27 @@ public class ShopProductController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/{friendlyUrl}.html")
+
 	public String displayProduct(@PathVariable final String friendlyUrl, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+//		try{
+//			Thread.sleep((long) (Math.random() * 10000));
+//		}catch(InterruptedException e){
+//			e.printStackTrace();
+//		}
 		return display(null, friendlyUrl, model, request, response, locale);
 	}
 
 
 	@SuppressWarnings("unchecked")
-	public String display(final String reference, final String friendlyUrl, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		
 
+	public String display(final String reference, final String friendlyUrl, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+
+//		try{
+//			System.out.println("Adding random delay");
+//			Thread.sleep((long) (Math.random() * 10000));
+//		}catch(InterruptedException e){
+//			e.printStackTrace();
+//		}
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -341,10 +353,11 @@ public class ShopProductController {
 	}
 	
     @RequestMapping(value={"/{productId}/calculatePrice.json"}, method=RequestMethod.POST)
+
 	public @ResponseBody
 	ReadableProductPrice calculatePrice(@RequestParam(value="attributeIds[]") Long[] attributeIds, @PathVariable final Long productId, final HttpServletRequest request, final HttpServletResponse response, final Locale locale) throws Exception {
 
-    	
+
     	MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -402,10 +415,10 @@ public class ShopProductController {
 		return attribute;
 		
 	}
-	
+
 	private List<ReadableProduct> relatedItems(MerchantStore store, Product product, Language language) throws Exception {
-		
-		
+
+
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 		populator.setPricingService(pricingService);
 		populator.setimageUtils(imageUtils);

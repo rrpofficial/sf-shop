@@ -20,7 +20,11 @@ public class ReadableProductReviewPopulator extends
 	public ReadableProductReview populate(ProductReview source,
 			ReadableProductReview target, MerchantStore store, Language language)
 			throws ConversionException {
-
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		
 		try {
 			ReadableCustomerPopulator populator = new ReadableCustomerPopulator();

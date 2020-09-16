@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -63,11 +64,13 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 	}
 	
 	@Override
+
 	public List<Customer> getListByStore(MerchantStore store) {
 		return customerRepository.findByStore(store.getId());
 	}
 	
 	@Override
+
 	public CustomerList getListByStore(MerchantStore store, CustomerCriteria criteria) {
 		return customerRepository.listByStore(store,criteria);
 	}

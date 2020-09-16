@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,7 @@ public class PricingServiceImpl implements PricingService {
 	private ProductPriceUtils priceUtil;
 	
 	@Override
+
 	public FinalPrice calculateProductPrice(Product product) throws ServiceException {
 		return priceUtil.getFinalPrice(product);
 	}
@@ -72,6 +74,7 @@ public class PricingServiceImpl implements PricingService {
 	}
 	
 	@Override
+
 	public String getDisplayAmount(BigDecimal amount, Locale locale,
 			Currency currency, MerchantStore store) throws ServiceException {
 		try {
@@ -84,6 +87,7 @@ public class PricingServiceImpl implements PricingService {
 	}
 
 	@Override
+
 	public String getStringAmount(BigDecimal amount, MerchantStore store)
 			throws ServiceException {
 		try {
@@ -96,6 +100,7 @@ public class PricingServiceImpl implements PricingService {
 	}
 
 	@Override
+
 	public BigDecimal getAmount(String amount) throws ServiceException {
 
 		try {

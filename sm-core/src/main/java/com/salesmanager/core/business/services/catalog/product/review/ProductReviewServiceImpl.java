@@ -3,6 +3,8 @@ package com.salesmanager.core.business.services.catalog.product.review;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.inject.Inject;
+
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.lang.Validate;
 import org.springframework.stereotype.Service;
 import com.salesmanager.core.business.exception.ServiceException;
@@ -48,6 +50,7 @@ public class ProductReviewServiceImpl extends
 	}
 	
 	@Override
+	@AddRandomDelay
 	public List<ProductReview> getByProduct(Product product, Language language) {
 		return productReviewRepository.findByProduct(product.getId(), language.getId());
 	}

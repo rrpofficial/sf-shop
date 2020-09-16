@@ -29,7 +29,11 @@ public class ReadableFinalPricePopulator extends
 			ReadableProductPrice target, MerchantStore store, Language language)
 			throws ConversionException {
 		Validate.notNull(pricingService,"pricingService must be set");
-		
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		try {
 			
 			target.setOriginalPrice(pricingService.getDisplayAmount(source.getOriginalPrice(), store));

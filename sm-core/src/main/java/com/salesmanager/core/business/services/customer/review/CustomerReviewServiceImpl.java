@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.lang.Validate;
 import org.springframework.stereotype.Service;
 
@@ -87,12 +88,14 @@ public class CustomerReviewServiceImpl extends
 	
 
 	@Override
+
 	public List<CustomerReview> getByCustomer(Customer customer) {
 		Validate.notNull(customer,"Customer cannot be null");
 		return customerReviewRepository.findByReviewer(customer.getId());
 	}
 
 	@Override
+
 	public List<CustomerReview> getByReviewedCustomer(Customer customer) {
 		Validate.notNull(customer,"Customer cannot be null");
 		return customerReviewRepository.findByReviewed(customer.getId());
@@ -100,6 +103,7 @@ public class CustomerReviewServiceImpl extends
 
 
 	@Override
+
 	public CustomerReview getByReviewerAndReviewed(Long reviewer, Long reviewed) {
 		Validate.notNull(reviewer,"Reviewer customer cannot be null");
 		Validate.notNull(reviewed,"Reviewer customer cannot be null");

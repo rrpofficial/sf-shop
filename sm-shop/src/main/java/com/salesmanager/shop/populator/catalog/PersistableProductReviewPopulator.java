@@ -50,7 +50,11 @@ public class PersistableProductReviewPopulator extends
 	public ProductReview populate(PersistableProductReview source,
 			ProductReview target, MerchantStore store, Language language)
 			throws ConversionException {
-		
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		
 		Validate.notNull(customerService,"customerService cannot be null");
 		Validate.notNull(productService,"productService cannot be null");

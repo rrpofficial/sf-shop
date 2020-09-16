@@ -5,6 +5,7 @@ package com.salesmanager.core.business.services.shoppingcart;
 
 import javax.inject.Inject;
 
+import com.salesmanager.core.business.configuration.AddRandomDelay;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,7 @@ public class ShoppingCartCalculationServiceImpl implements ShoppingCartCalculati
 	 * @throws ServiceException
 	 */
 	@Override
+
 	public OrderTotalSummary calculate(final ShoppingCart cartModel, final Customer customer, final MerchantStore store,
 			final Language language) throws ServiceException {
 
@@ -98,6 +100,7 @@ public class ShoppingCartCalculationServiceImpl implements ShoppingCartCalculati
 	 * @throws ServiceException
 	 */
 	@Override
+
 	public OrderTotalSummary calculate(final ShoppingCart cartModel, final MerchantStore store, final Language language)
 			throws ServiceException {
 

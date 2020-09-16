@@ -115,6 +115,7 @@ public class SearchController {
 	 */
 	@RequestMapping(value="/services/public/search.json", method=RequestMethod.POST)
 	@ResponseBody
+
 	public SearchProductList search(
 	    @RequestBody SearchProductRequest searchRequest,
 	    Model model, 

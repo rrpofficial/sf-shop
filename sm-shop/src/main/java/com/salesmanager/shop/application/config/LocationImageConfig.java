@@ -23,7 +23,6 @@ public class LocationImageConfig {
 
   @Bean
   public ImageFilePath img() {
-	  
 	if(!StringUtils.isEmpty(method) && !method.equals("default")) {
 	    CloudFilePathUtils cloudFilePathUtils = new CloudFilePathUtils();
 	    cloudFilePathUtils.setBasePath(contentUrl);

@@ -14,6 +14,7 @@ public class ShopServletContextListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		logger.info("===context init===");
+		System.out.println("_______________________________________________********************************************");
 		System.getenv().forEach((k, v) -> {
 		  logger.debug(k + ":" + v);
 		});

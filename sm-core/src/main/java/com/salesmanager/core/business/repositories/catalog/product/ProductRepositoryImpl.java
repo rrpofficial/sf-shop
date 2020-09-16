@@ -54,6 +54,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		final Query q = this.em.createQuery(hql);
 		q.setParameter("pid", productId);
+		System.out.println("Adding the random delay");
+		try{
+			Thread.sleep((long) (Math.random() * 10000));
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 
 		try {
 			return (Product)q.getSingleResult();
@@ -902,7 +908,11 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
-
+        try{
+            Thread.sleep((long) (Math.random() * 10000));
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
 		return products;
 
 	}
@@ -994,7 +1004,11 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		qs.append("left join fetch manuf.descriptions manufd ");
 		qs.append("left join fetch p.type type ");
 		qs.append("left join fetch p.taxClass tx ");
-
+        try{
+            Thread.sleep((long) (Math.random() * 10000));
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
 		// RENTAL
 		qs.append("left join fetch p.owner owner ");
 		return qs.toString();
